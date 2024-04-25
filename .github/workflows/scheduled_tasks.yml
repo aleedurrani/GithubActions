@@ -1,0 +1,31 @@
+name: Daily Maintenance
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Clean up old files
+        run: |
+          rm -rf old_files/
+      
+      - name: Update dependencies
+        run: npm update
+
+      - name: Run database migrations
+        run: npm run migrate
+
+      - name: Generate reports
+        run: npm run generate-reports
+
+      - name: Backup data
+        run: |
+          mkdir -p backups
+          cp -r data/ backups/
