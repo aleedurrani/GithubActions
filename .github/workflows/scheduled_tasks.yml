@@ -2,7 +2,7 @@ name: Daily Maintenance
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '25 3 * * *'
 
 jobs:
   maintenance:
