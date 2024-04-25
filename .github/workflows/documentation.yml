@@ -1,0 +1,32 @@
+name: Documentation Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install  
+
+      - name: Build documentation
+        run: npm run build-docs  
+
+      - name: Commit generated files
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add docs  # Assuming documentation is generated in 'docs' directory
+          git commit -m "Build documentation"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
