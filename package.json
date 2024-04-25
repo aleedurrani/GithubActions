@@ -9,7 +9,7 @@
     "start": "node run.js",
     "lint": "eslint .",
     "build": "npx babel src -d dist",
-    "build-docs":"npx documentation build run.js -f html -o docs"
+    "build-docs": "npx documentation build run.js -f html -o docs"
   },
   "jest": {
     "testEnvironment": "node",
