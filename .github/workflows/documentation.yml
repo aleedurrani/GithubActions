@@ -25,6 +25,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add docs  # Assuming documentation is generated in 'docs' directory
           git commit -m "Build documentation"
+        continue-on-error: true
       
       - name: Push changes
         uses: ad-m/github-push-action@master
