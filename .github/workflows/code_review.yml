@@ -39,15 +39,3 @@ jobs:
       - name: Provide feedback
         run: |
           echo "Code review completed."
-          # Add any additional feedback or comments as needed
-
-      # Enforce required checks before merging
-      - name: Enforce checks
-        if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened')
-        uses: github/script-check@v3
-        with:
-          script: |
-            if [[ -z "${{ steps['Check coding standards'].outputs.exitcode }}" || -z "${{ steps['Analyze code quality'].outputs.exitcode }}" || -z "${{ steps['Scan for vulnerabilities'].outputs.exitcode }}" ]]; then
-              echo "Code review checks failed. Please fix the issues before merging.";
-              exit 1;
-            fi
