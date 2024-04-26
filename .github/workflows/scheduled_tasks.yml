@@ -2,7 +2,7 @@ name: Daily Maintenance
 
 on:
   schedule:
-    - cron: '25 3 * * *'
+    - cron: '30 2 * * *'
 
 jobs:
   maintenance:
@@ -28,4 +28,4 @@ jobs:
       - name: Backup data
         run: |
           mkdir -p backups
-          cp -r data/ backups/
+          cp -r src/ backups/
