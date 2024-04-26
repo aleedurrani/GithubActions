@@ -12,7 +12,8 @@
     "build-docs": "npx documentation build run.js -f html -o docs",
     "migrate": "echo 'Migrating...'",
     "generate-reports": "echo 'Generating reports'",
-    "snyk-test": "echo 'Testing for vulnerabilities'"
+    "snyk-test": "echo 'Testing for vulnerabilities'",
+    "generate-release-notes": "echo 'My release notes' > release_notes.txt"
   },
   "jest": {
     "testEnvironment": "node",
