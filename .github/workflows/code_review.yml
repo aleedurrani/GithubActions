@@ -26,7 +26,7 @@ jobs:
 
       # Scan for security vulnerabilities using Snyk
       - name: Scan for vulnerabilities
-        run: npx snyk test  
+        run: npm run snyk-test  
 
       # Provide feedback on pull request
       - name: Provide feedback
