@@ -1,0 +1,53 @@
+name: Code Review Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  code_review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install  
+
+      # Check coding standards using ESLint
+      - name: Check coding standards
+        run: npm run lint
+        continue-on-error: true
+
+      # Analyze code quality metrics using SonarQube
+      - name: Analyze code quality
+        uses: sonarsource/sonarcloud-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      # Scan for security vulnerabilities using Snyk
+      - name: Scan for vulnerabilities
+        run: npx snyk test  
+
+      # Provide feedback on pull request
+      - name: Provide feedback
+        run: |
+          echo "Code review completed."
+          
+
+      # Enforce required checks before merging
+      - name: Enforce checks
+        if: github.event_name == 'pull_request' && github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened'
+        uses: github/script-check@v3
+        with:
+          script: |
+            if [[ -z "${{ steps.Check coding standards.outputs.exitcode }}" || -z "${{ steps.Analyze code quality.outputs.exitcode }}" || -z "${{ steps.Scan for vulnerabilities.outputs.exitcode }}" ]]; then
+              echo "Code review checks failed. Please fix the issues before merging.";
+              exit 1;
+            fi
