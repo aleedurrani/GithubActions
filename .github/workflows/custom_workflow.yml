@@ -1,0 +1,36 @@
+name: Generate Release Notes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_release_notes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Generate Release Notes
+        run: |
+          # Run a script to generate release notes
+          npm run generate-release-notes > release_notes.txt
+          cat release_notes.txt
+
+      - name: Post Release Notes as Comment
+        if: github.event_name == 'push_request'
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const fs = require('fs');
+            const releaseNotes = fs.readFileSync('release_notes.txt', 'utf8');
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: releaseNotes
+            });
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
