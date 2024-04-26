@@ -20,7 +20,7 @@ jobs:
           cat release_notes.txt
 
       - name: Post Release Notes as Comment
-        if: github.event_name == 'push_request'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/github-script@v4
         with:
           script: |
