@@ -11,7 +11,8 @@
     "build": "npx babel src -d dist",
     "build-docs": "npx documentation build run.js -f html -o docs",
     "migrate": "echo 'Migrating...'",
-    "generate-reports": "echo 'Generating reports'"
+    "generate-reports": "echo 'Generating reports'",
+    "snyk-test": "echo 'Testing for vulnerabilities'"
   },
   "jest": {
     "testEnvironment": "node",
