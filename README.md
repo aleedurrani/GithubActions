@@ -3,18 +3,18 @@
 Welcome to Heavens Above, a web application designed to streamline task and project management with a suite of automation workflows powered by GitHub Actions. This repository contains all the necessary configurations and scripts to ensure continuous integration, seamless deployment, regular maintenance, automated dependency updates, enhanced code review processes, and automated documentation deployment.
 
 **Table of Contents**
-- [@Introduction]
--[@Workflows]
--[Continuous Integration]
--[Deployment Pipeline]
--[Scheduled Tasks]
--[Dependency Updates]
--[Code Review Workflow]
--[Documentation Deployment]
--[Custom Workflow Integration]
--[Getting Started]
--[Contributing]
--[License]
+- Introduction
+- Workflows
+- Continuous Integration
+- Deployment Pipeline
+- Scheduled Tasks
+- Dependency Updates
+- Code Review Workflow
+- Documentation Deployment
+- Custom Workflow Integration
+- Getting Started
+- Contributing
+- License
 
 **Introduction**
 Heavens Above is your one-stop solution for managing tasks and projects efficiently. With automation at its core, this application leverages GitHub Actions to maintain code quality, streamline deployment, and automate various aspects of the development lifecycle.
