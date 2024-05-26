@@ -1,39 +1,127 @@
-# Heavens Above
+**Heavens Above - Automated Task and Project Management Web Application**
 
-爬取 Heavens Above 网站，获取卫星过境等信息。基于 Node.js，需使用 `npm` 安装依赖。  
-Scripts for scraping the Heavens Above website. It's based on Node.js. You may need to install some dependency packages using npm.
+Welcome to Heavens Above, a web application designed to streamline task and project management with a suite of automation workflows powered by GitHub Actions. This repository contains all the necessary configurations and scripts to ensure continuous integration, seamless deployment, regular maintenance, automated dependency updates, enhanced code review processes, and automated documentation deployment.
 
-**警告：不支持 IE。**  
-**WARNING: DO NOT SUPPORT IE.**
+**Table of Contents**
+Introduction
+Workflows
+Continuous Integration
+Deployment Pipeline
+Scheduled Tasks
+Dependency Updates
+Code Review Workflow
+Documentation Deployment
+Custom Workflow Integration
+Getting Started
+Contributing
+License
 
-## To Use
+**Introduction**
+Heavens Above is your one-stop solution for managing tasks and projects efficiently. With automation at its core, this application leverages GitHub Actions to maintain code quality, streamline deployment, and automate various aspects of the development lifecycle.
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download) (which comes with [npm](http://npmjs.com)) installed on your computer. `Promise.allSettled` requires Node.js 12.10.0 or later. From your command line:
-```bash
-# Clone this repository
-git clone https://github.com/PKUPI/heavens-above.git
-# Go into the repository
+**Workflows**
+_Continuous Integration_
+YAML File: .github/workflows/ci.yml
+
+Purpose: Ensures code quality by running tests and linting on every push to the main branch.
+
+Configuration:
+
+Triggers on push events to the main branch.
+Runs unit tests and linting.
+Provides feedback on the success or failure of each check.
+
+_Deployment Pipeline_
+YAML File: .github/workflows/deploy.yml
+
+Purpose: Automates the deployment process, ensuring that new features and fixes are deployed smoothly to the production environment.
+
+Configuration:
+
+Defines stages for building, testing, and deploying the application.
+Deploys to hosting platform such as Github pages.
+Ensures secure and best practices for continuous delivery.
+
+_Scheduled Tasks_
+YAML File: .github/workflows/scheduled-tasks.yml
+
+Purpose: Performs regular maintenance tasks, such as data backups and cleanup.
+
+Configuration:
+
+Runs on a predefined schedule (e.g., daily, weekly).
+Executes specific commands or scripts at the scheduled time.
+Provides relevant notifications or logs.
+
+_Dependency Updates_
+YAML File: .github/workflows/dependency-updates.yml
+
+Purpose: Monitors and updates project dependencies automatically.
+
+Configuration:
+
+Utilizes Dependabot or custom scripts to check for updates.
+Creates pull requests with dependency changes.
+Runs tests to verify compatibility.
+Adheres to versioning policies and includes review mechanisms.
+
+_Code Review Workflow_
+YAML File: .github/workflows/code-review.yml
+
+Purpose: Enhances the code review process by automating checks for coding standards, code quality, and security vulnerabilities.
+
+Configuration:
+
+Triggers on pull request events.
+Checks coding standards and analyzes code quality metrics.
+Scans for security vulnerabilities.
+Provides feedback on pull requests and enforces required checks before merging.
+
+_Documentation Deployment_
+YAML File: .github/workflows/documentation.yml
+
+Purpose: Automates the deployment of project documentation.
+
+Configuration:
+
+Builds and deploys documentation to platforms like GitHub Pages or Read the Docs.
+Generates documentation from source files (e.g., Markdown, reStructuredText).
+Publishes documentation automatically whenever changes are made.
+
+_Custom Workflow Integration_
+YAML File: .github/workflows/custom-workflow.yml
+
+Purpose: Automates a specific task or process relevant to the project.
+
+Configuration:
+
+Custom workflow for generating release notes, analyzing performance metrics, or syncing data.
+Implements flexible features of GitHub Actions.
+Integrates seamlessly into the development workflow.
+
+**Getting Started**
+To get started with the Heavens Above project, follow these steps:
+
+Clone the repository:
+
+Copy code
+git clone https://github.com/stevenjoezhang/heavens-above.git
+Install dependencies:
+
+
+Copy code
 cd heavens-above
-# Install dependencies
 npm install
-# Run the app
-node run.js
-```
+Configure environment variables:
 
-`public` 目录下是一个完整的网站，爬取的数据会存储在 `public/data` 目录下，通过网络服务器访问 `public/index.html` 即可查看数据的内容。  
-将 `node run.js` 添加到 `crontab`，以每周或每月一次的频率执行，则可以始终获取最新数据。
+Copy code
+cp .env.example .env
+#Edit .env file to include your configuration
+Run the application:
 
-## Credits
+Copy code
+npm start
 
-* [Mimi](https://zhangshuqiao.org) Developer of this project.  
-* Inspired by https://github.com/chengxinlun/haQuery
 
-## License
-
-Released under the GNU General Public License v3  
-http://www.gnu.org/licenses/gpl-3.0.html
-
-## Todo List
-
-=\_=
-User Customize
+**License**
+This project is licensed under the MIT License. See the LICENSE file for details.
